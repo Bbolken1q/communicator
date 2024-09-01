@@ -1,0 +1,8 @@
+.inputbar {
+    float: right;
+    width: calc(65% - 14px);
+    padding: 7px;
+    background-color: #3e3a49;
+    /* max-height: 5%; */
+    height: calc(5% - 14px);
+}

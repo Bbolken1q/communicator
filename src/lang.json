@@ -1,0 +1,8 @@
+{
+    "lang": {
+    "offline": "Offline",
+    "online": "Online",
+    "afk": "Away from keyboard",
+    "dnd": "Do not disturb"
+    }
+}
