@@ -3,7 +3,7 @@ import './styles/Colors.css'
 import './styles/Message.css'
 import './styles/InputBar.css'
 
-import React from 'react';
+import { React } from 'react';
 
 // import { Message } from './components/message'
 import { MessageContainer } from './components/messageContainer';
@@ -26,17 +26,17 @@ P.P.S. Czyli kastratowi można ufać tylko w połowie`
 
 // const messageContainer = React.createElement("MessageContainer")
 
-//   setTimeout(() => {
-//   setTimeout(() => {
-//     window.messageContainer.editMessage("1", "edited")
-//   }, 1000)
-//   // setTimeout(() => {
-//   //   window.messageContainer.removeMessage("1")
-//   // }, 2000)
-// }, 3000)
+  setTimeout(() => {
+  setTimeout(() => {
+    window.messageContainer.editMessage("1", `***this supports markdown and shit*** [links://work.now](https://youtube.com)`)
+  }, 1000)
+  // setTimeout(() => {
+  //   window.messageContainer.removeMessage("1")
+  // }, 2000)
+}, 3000)
 
 setTimeout(() => {
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 1; i++) {
     window.messageContainer.addMessage("1", "message", "1")
   }
 }, 1)
@@ -46,11 +46,15 @@ setTimeout(() => {
 }, 1);
 
 function App() {
+  
   return (
     <div style={{
       width: "100%",
       height: "100%"
-    }}>
+    }}>  
+
+    {/* {tooLong("tekst testowy który ma więcej niż 100 pikseli", null, 100)} */}
+
       <UserContainer />
       <Title text={window.channel.name} sub={window.channel.sub}/>
       <MessageContainer />

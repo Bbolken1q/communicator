@@ -100,7 +100,7 @@ a {
   /* background-color: #f0f !important; */
   display: flex;
   flex-direction: column;
-  width: 67%;
+  width: calc(67% + 6px);
   overflow-x: hidden;
   overflow-y: scroll;
   flex-wrap: nowrap;
@@ -132,7 +132,13 @@ a {
 .title div .sub {
   color: #706a7e;
   padding-top: 3px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   font-size: small;
+  text-align: left;
+  word-wrap: break-word;
+
 }
 
 .title div .main {

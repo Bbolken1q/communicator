@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import lang from '../lang.json'
 import '../styles/Colors.css'
 import users from './users'
@@ -6,19 +6,54 @@ import users from './users'
 
 const ping = new Audio('../assets/ping.mp3')
 
-function tooLong(string, maxLength) {
-    if(!string) { 
+function getTextWidth(string) { 
+     
+    let text = document.createElement("span"); 
+    document.body.appendChild(text); 
+
+    let style = text.style
+
+    style.font = "auto"; 
+    style.fontSize = 16 + "px"; 
+    style.height = 'auto'; 
+    style.width = 'auto'; 
+    style.opacity = '0';
+    style.position = 'absolute'; 
+    style.whiteSpace = 'no-wrap'; 
+    text.textContent = string; 
+ 
+    let width = Math.ceil(text.clientWidth); 
+ 
+    document.body.removeChild(text);
+    return width;
+}
+
+function tooLong(string, maxLength, maxWidth) {
+    if(!string || (!maxLength && !maxWidth)) { 
         return "";
     }
     else if(string.length === 0) {
         return "";
     }
     else {
-        if(string.length >= maxLength) {
-            return string.slice(0, maxLength-3)+"..."
+        if(maxWidth) {
+            if(string) {
+                let outputText = string
+                while(getTextWidth(outputText)>maxWidth)
+                {
+                    outputText = outputText.slice(0, outputText.length-1)
+                }
+                outputText = outputText.slice(0, outputText.length-3)+"..."
+                return <div>{outputText}</div>
+            }
         }
         else {
-            return string.slice(0, maxLength)
+            if(string.length >= maxLength) {
+                return string.slice(0, maxLength-3)+"..."
+            }
+            else {
+                return string.slice(0, maxLength)
+            } 
         }
     }
     
