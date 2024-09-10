@@ -135,7 +135,7 @@ a {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  font-size: small;
+  font-size: 13px;
   text-align: left;
   word-wrap: break-word;
 

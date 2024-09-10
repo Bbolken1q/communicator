@@ -6,15 +6,14 @@ import users from './users'
 
 const ping = new Audio('../assets/ping.mp3')
 
-function getTextWidth(string) { 
-     
+function getTextWidth(string, font = 16) { 
     let text = document.createElement("span"); 
     document.body.appendChild(text); 
 
     let style = text.style
 
     style.font = "auto"; 
-    style.fontSize = 16 + "px"; 
+    style.fontSize = font + "px"; 
     style.height = 'auto'; 
     style.width = 'auto'; 
     style.opacity = '0';
@@ -28,7 +27,7 @@ function getTextWidth(string) {
     return width;
 }
 
-function tooLong(string, maxLength, maxWidth) {
+function tooLong(string, maxLength, maxWidth, font, overwrite) {
     if(!string || (!maxLength && !maxWidth)) { 
         return "";
     }
@@ -39,11 +38,13 @@ function tooLong(string, maxLength, maxWidth) {
         if(maxWidth) {
             if(string) {
                 let outputText = string
-                while(getTextWidth(outputText)>maxWidth)
+                console.log(getTextWidth(outputText, font))
+                while(getTextWidth(outputText, font)>maxWidth)
                 {
                     outputText = outputText.slice(0, outputText.length-1)
                 }
                 outputText = outputText.slice(0, outputText.length-3)+"..."
+                console.log(getTextWidth(outputText, font))
                 return <div>{outputText}</div>
             }
         }
